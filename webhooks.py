@@ -3,6 +3,14 @@ import requests
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return "Hello, Railway is running!"
+
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    return "Webhook received!", 200
+
 TELEGRAM_TOKEN = "8043847080:AAFHwUxFD0Te79qbM6kwJnWWPLKOU-Mno7M"
 CHAT_ID = "-4172859578"
 
