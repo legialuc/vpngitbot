@@ -8,7 +8,7 @@ def home():
     return "Hello, Railway is running!"
 
 TELEGRAM_TOKEN = "8043847080:AAFHwUxFD0Te79qbM6kwJnWWPLKOU-Mno7M"
-CHAT_ID = "-4172859578"
+CHAT_ID = "-1002290882824"
 
 def send_telegram_message(message):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
