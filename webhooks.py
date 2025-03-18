@@ -16,8 +16,8 @@ def webhook():
     data = request.json
     if data and "object_kind" in data and data["object_kind"] == "merge_request":
         user = data["user"]["name"]
-        title = data["object_attributes"]["title"]
-        url = data["object_attributes"]["url"]
+        title = data["last_commit"]["title"]
+        url = data["last_commit"]["url"]
         message = f"🚀 *Merge Request Created!*\n👤 By: {user}\n📌 Title: {title}\n🔗 [View MR]({url})"
         send_telegram_message(message)
         return "OK", 200
