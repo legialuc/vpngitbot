@@ -10,6 +10,12 @@ with open("config.json", "r") as f:
 
 PROJECT_CHAT_MAPPING = config["projects"]
 
+def send_google_chat_message(chat_id, message):
+    """ Gửi tin nhắn vào Google Chat """
+    payload = {"text": message}
+    headers = {"Content-Type": "application/json"}
+    requests.post(chat_id, json=payload, headers=headers)
+
 def send_telegram_message(chat_id, message):
     TELEGRAM_TOKEN = "8043847080:AAFHwUxFD0Te79qbM6kwJnWWPLKOU-Mno7M"
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
@@ -28,7 +34,8 @@ def webhook():
             title = data["object_attributes"]["last_commit"]["title"]
             url = data["object_attributes"]["last_commit"]["url"]
             message = f"🚀 *Merge Request Created!*\n👤 By: {user}\n📌 Title: {title}\n🔗 [View MR]({url})"
-            send_telegram_message(chat_id, message)
+            # send_telegram_message(chat_id, message)
+            send_google_chat_message(chat_id, message)
             return "OK", 200
         else:
             return "Project ID not found in config", 404
