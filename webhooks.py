@@ -10,11 +10,17 @@ with open("config.json", "r") as f:
 
 PROJECT_CHAT_MAPPING = config["projects"]
 
-def send_telegram_message(chat_id, message):
-    TELEGRAM_TOKEN = "8043847080:AAFHwUxFD0Te79qbM6kwJnWWPLKOU-Mno7M"
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
-    requests.post(url, json=payload)
+# def send_telegram_message(chat_id, message):
+#     TELEGRAM_TOKEN = "8043847080:AAFHwUxFD0Te79qbM6kwJnWWPLKOU-Mno7M"
+#     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+#     payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
+#     requests.post(url, json=payload)
+
+def send_google_chat_message(webhook_url, message):
+    """ Gửi tin nhắn vào Google Chat """
+    payload = {"text": message}
+    headers = {"Content-Type": "application/json"}
+    requests.post(webhook_url, json=payload, headers=headers)
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -28,7 +34,8 @@ def webhook():
             title = data["object_attributes"]["last_commit"]["title"]
             url = data["object_attributes"]["last_commit"]["url"]
             message = f"*Merge Request Created!*\nNgười tạo: {user}\nTitle: {title}\n[View Merge Request]({url})"
-            send_telegram_message(chat_id, message)
+            # send_telegram_message(chat_id, message)
+            send_google_chat_message(google_chat_webhook, message)
             return "OK", 200
         else:
             return "không tìm thấy projectId", 404
