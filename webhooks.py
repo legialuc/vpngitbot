@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Load file config.json
-with open("config.json", "r") as f:
+with open("config.json", "r") as file:
     config = json.load(f)
 
 PROJECT_CHAT_MAPPING = config["projects"]
