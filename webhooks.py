@@ -25,8 +25,8 @@ def webhook():
         
         if chat_id:  # Nếu có chatID, gửi tin nhắn
             user = data["user"]["name"]
-            title = data["object_attributes"]["title"]
-            url = data["object_attributes"]["url"]
+            title = data["last_commit"]["title"]
+            url = data["last_commit"]["url"]
             message = f"🚀 *Merge Request Created!*\n👤 By: {user}\n📌 Title: {title}\n🔗 [View MR]({url})"
             send_telegram_message(chat_id, message)
             return "OK", 200
