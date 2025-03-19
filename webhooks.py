@@ -29,7 +29,6 @@ def webhook():
             url = data["object_attributes"]["last_commit"]["url"]
             message = f"*Merge Request Created!*\nNgười tạo: {user}\nTitle: {title}\n[View Merge Request]({url})"
             send_telegram_message(chat_id, message)
-            # send_google_chat_message(google_chat_webhook, message)
             return "OK", 200
         else:
             return "không tìm thấy projectId", 404
