@@ -1,8 +1,3 @@
-{
-    "projects": {
-        "68112081": {
-            "chat_id": "-1002290882824",
-            "google_chat_webhook": "https://chat.googleapis.com/v1/spaces/AAAAXbrq4G4/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=Y-ILQB4gz37imx5KRqKa5dROlopBvZoAJ_N3lABfbqY"
-        }
-    }
-}
+ "projects": {
+     "68112081": "-1002290882824"
+   }
