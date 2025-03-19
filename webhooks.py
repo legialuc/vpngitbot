@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load file config.json
 with open("config.json", "r") as file:
-    config = json.load(f)
+    config = json.load(file)
 
 PROJECT_CHAT_MAPPING = config["projects"]
 
