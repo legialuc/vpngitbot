@@ -93,7 +93,7 @@ def webhook():
             send_telegram_message(chat_id, message)
 
             # Gửi thông báo lên Google Chat
-            send_google_chat_message(google_chat_webhook, message)
+            # send_google_chat_message(google_chat_webhook, message)
 
             return "OK", 200
         else:
